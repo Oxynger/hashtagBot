@@ -29,7 +29,7 @@ const expressApp = new express();
 const bot = new telegraf(TOKEN, telegrapfOption);
 
 bot.start((ctx) => {
-    userName = ctx.message.from.first_name;
+    let userName = ctx.message.from.first_name;
     return ctx.reply(greeter(userName));
 })
 
@@ -45,6 +45,7 @@ bot.launch();
 expressApp.get('/', (req, res) => {
     res.send('Hello World!');
 });
+
 expressApp.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
