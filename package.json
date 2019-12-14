@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "This is telegram bot for generating hashtags",
   "main": "main.js",
+  "type": "module",
   "scripts": {
     "start": "node main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/Oxynger/hashtagBot/issues"
   },
-  "homepage": "https://github.com/Oxynger/hashtagBot#readme"
+  "homepage": "https://github.com/Oxynger/hashtagBot#readme",
+  "dependencies": {
+    "https-proxy-agent": "^4.0.0",
+    "telegraf": "^3.34.1"
+  }
 }

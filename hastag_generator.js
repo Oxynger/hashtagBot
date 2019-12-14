@@ -6,7 +6,7 @@ function capitalize(str) {
     }
 }
 
-exports.generate = function (str) {
+export function generate(str) {
     let hashtag = str.split(" ").filter(Element => Element).map(capitalize).join("")
     if (hashtag.length == 0 || hashtag.length > 50)
         throw new Error("Hashtag must have from 1 to 50 symbols")

@@ -1,6 +1,6 @@
-const telegraf = require("telegraf")
-const proxy = require("https-proxy-agent")
-const { generate } = require("./hastag_generator")
+import telegraf from "telegraf";
+import proxy from "https-proxy-agent"
+import { generate } from "./hastag_generator.js"
 
 const token = process.env.BOT_TOKEN
 const proxy_url = process.env.PROXY_URL
