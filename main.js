@@ -35,4 +35,8 @@ bot.on('text', ({ message: { text }, reply }) => {
     }
 })
 
-bot.launch()
+bot.launch({
+    webhook: {
+        port: process.env.PORT
+    }
+})
