@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Oxynger/hashtagBot#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "https-proxy-agent": "^4.0.0",
     "telegraf": "^3.34.1"
   },

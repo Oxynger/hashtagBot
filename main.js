@@ -1,9 +1,13 @@
 import telegraf from "telegraf";
-import proxy from "https-proxy-agent"
-import { generate } from "./hastag_generator.js"
+import proxy from "https-proxy-agent";
+import express from "express";
+import { generate } from "./hastag_generator.js";
 
-const token = process.env.BOT_TOKEN
-const telegrapfOption = proxyOptions(process.env.PROXY_URL)
+const TOKEN = process.env.BOT_TOKEN;
+const PORT = process.env.PORT || 3000;
+const URL = process.env.URL;
+
+const telegrapfOption = proxyOptions(process.env.PROXY_URL);
 
 function proxyOptions(proxy_url) {
     if (proxy_url) {
@@ -17,26 +21,30 @@ function proxyOptions(proxy_url) {
 }
 
 function greeter(name) {
-    return generate(`Hello ${name}!`)
+    return generate(`Hello ${name}!`);
 }
 
-let bot = new telegraf(token, telegrapfOption)
+const expressApp = new express();
+
+const bot = new telegraf(TOKEN, telegrapfOption);
 
 bot.start((ctx) => {
-    userName = ctx.message.from.first_name
-    return ctx.reply(greeter(userName))
+    userName = ctx.message.from.first_name;
+    return ctx.reply(greeter(userName));
 })
 
 bot.on('text', ({ message: { text }, reply }) => {
     try { return reply(generate(text)) }
     catch (e) {
-        console.log(e.stack)
-        return reply(e.message)
+        console.log(e.stack);
+        return reply(e.message);
     }
 })
+bot.launch();
 
-bot.launch({
-    webhook: {
-        port: process.env.PORT
-    }
-})
+expressApp.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+expressApp.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
