@@ -20,7 +20,8 @@
   "homepage": "https://github.com/Oxynger/hashtagBot#readme",
   "dependencies": {
     "https-proxy-agent": "^4.0.0",
-    "telegraf": "^3.34.1"
+    "telegraf": "^3.34.1",
+    "telegraf-command-parts": "^1.0.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.5",

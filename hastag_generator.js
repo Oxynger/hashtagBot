@@ -14,3 +14,18 @@ export function generate(str) {
 
     return hashtag
 }
+
+export function combine(strs) {
+    let combinations = (action, rest, resault) => {
+        if (!action && !rest.length)
+            return;
+        if (!rest.length) {
+            resault.push(action)
+        } else {
+            combinations(action + rest[0] + " ", rest.slice(1), resault)
+            combinations(action, rest.slice(1), resault)
+        }
+        return resault
+    }
+    return combinations("", strs, []).map(generate).join(" ")
+}
